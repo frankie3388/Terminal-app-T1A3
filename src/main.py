@@ -1,6 +1,7 @@
 from data import data_set
 import random
-from functions import add_history, view_history, funds
+from functions import add_history, view_history, funds, play, display_result
+
 
 # print(data_set[1]["color"])
 
@@ -14,7 +15,7 @@ try:
 
 except FileNotFoundError as e:
     history_file = open(file_name, "w")
-    history_file.write("Game,Result\n")
+    history_file.write("Number, Colour, Even/Odd\n")
     history_file.close()
     print("In except block")
 
@@ -25,7 +26,10 @@ total_funds = 0
 finished_betting = ""
 random_number = 0
 game = 0
-    
+color = ""
+even_odd = ""
+play_roulette = ""
+
 
 # print(funds())
 # print(total_funds)
@@ -46,8 +50,10 @@ while user_selection != "3":
     user_selection = nav_menu()
 
     if user_selection == "1":
-        funds(total_funds)
-        input("Enter: ")
+        total_funds = funds(total_funds)
+        # print(total_funds)
+        play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random_number, total_funds)
+        
     elif user_selection == "2":
         view_history(file_name)
     elif user_selection == "3":
@@ -57,18 +63,5 @@ while user_selection != "3":
 
 print("Thanks for playing Roulette")
 
-# while play_roulette != "yes":
-# while finished_betting != "yes":
-#     what_you_bet_on.append(input("Enter what you would like to bet on (Must be either 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive): "))
-#     bet += int(input(f"Enter how much you want to bet on for \"{what_you_bet_on}\": "))
-#     finished_betting = input("Enter 'yes' to start game or 'no' to continue placing bets: ")
-#     if finished_betting == "yes":
-#         game += 1
-#         random_number = random.randint(0, 36)
-#         print(f"The number landed on is {random_number}")
-#         add_history(file_name, game, random_number)
-#         # play_roulette = input("Do you wish to exit game? (yes/no): ")
-# print(what_you_bet_on)
-# print(bet)
 
 

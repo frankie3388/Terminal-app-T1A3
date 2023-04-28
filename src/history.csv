@@ -1,6 +1,10 @@
-Game,Result
-1,7
-1,23
-1,2
-1,7
-1,20
+Number, Colour, Even/Odd
+22,black,even
+13,red,odd
+32,black,even
+11,red,odd
+1,red,odd
+13,red,odd
+17,red,odd
+14,black,even
+7,red,odd
