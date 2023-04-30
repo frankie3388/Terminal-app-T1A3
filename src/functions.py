@@ -20,7 +20,6 @@ def add_history(file_name, color, even_odd, random_number):
 def view_history(file_name):
     with open(file_name, "r") as history_file:
         record = csv.reader(history_file)
-        
         for row in record:
             print(row)
 
@@ -29,13 +28,13 @@ def funds(total_funds):
     # total_funds
     while total_funds == 0:
         try:
-            total_funds = int(input("Enter funds to start off with - a maximum of $500 can be entered: "))
-            if total_funds > 500:
+            total_funds = int(input("Enter funds to start off with - a minimum of $5 can be entered: "))
+            # if total_funds > 500:
+            #     total_funds = 0
+            #     print("Please enter amount less than or equal to 500")
+            if total_funds < 5:
                 total_funds = 0
-                print("Please enter amount less than or equal to 500")
-            elif total_funds < 0:
-                total_funds = 0
-                print("Please enter amount greater than 0")
+                print("Please enter amount greater than 5")
             else:
                 return total_funds
         except ValueError:
@@ -44,17 +43,34 @@ def funds(total_funds):
 
 def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random_number, total_funds):
     while play_roulette != "yes":
-        what_you_bet_on.append(input("Enter what you would like to bet on (Must be either 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive): "))
-        next_bet = betting(bet, what_you_bet_on, total_funds)
-        total_funds -= next_bet
-        print(f"funds {total_funds}")
-        bet += next_bet
-        finished_betting = input("Enter 'yes' to start game or 'no' to continue placing bets: ")
-        if finished_betting == "yes":
-            display_result(data_set, random_number, color, even_odd, file_name)
-            play_roulette = input("Do you wish to exit game? (yes/no): ")
-            if play_roulette == "no":
-                what_you_bet_on = []
+        if total_funds >= 5:
+            what_you_bet_on.append(input("Enter what you would like to bet on (Must be either 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive): "))
+            next_bet = betting(bet, what_you_bet_on, total_funds)
+            total_funds -= next_bet
+            print(f"funds {total_funds}")
+            bet += next_bet
+            finished_betting = input("Enter 'yes' to start game or 'no' to continue placing bets: ")
+            # Need to make a function for the below (repeated code)
+            if finished_betting == "yes":
+                random_number = 0
+                color = ""
+                even_odd = ""
+                # display_result(data_set, random_number, color, even_odd, file_name)
+                random_number, color, even_odd = display_result(data_set, random_number, color, even_odd, file_name)
+                print(random_number, color, even_odd)
+                win_lose(what_you_bet_on, random_number, bet, total_funds, color, even_odd)
+                # print(total_funds)
+                
+                play_roulette = input("Do you wish to exit game? (yes/no): ")
+                if play_roulette == "no":
+                    what_you_bet_on = []
+        else:
+            finished_betting = input("You can't place anymore bets as you have less than $5 in funds. Enter \"yes\" to start game: ")
+            if finished_betting == "yes":
+                display_result(data_set, random_number, color, even_odd, file_name)
+                play_roulette = input("Do you wish to exit game? (yes/no): ")
+                if play_roulette == "no":
+                    what_you_bet_on = []
     
 
 def display_result(data_set, random_number, color, even_odd, file_name):
@@ -65,7 +81,7 @@ def display_result(data_set, random_number, color, even_odd, file_name):
             even_odd = data["even_odd"]
             print(f"The number landed on is {random_number} {color} {even_odd}")
             add_history(file_name, color, even_odd, random_number)
-            break
+            return random_number, color, even_odd
 
 def betting(bet, what_you_bet_on, total_funds):
     while True:
@@ -81,3 +97,21 @@ def betting(bet, what_you_bet_on, total_funds):
                 return bet
         except ValueError:
             print("Please type in numbers only")
+
+
+def win_lose(what_you_bet_on, random_number, bet, total_funds, color, even_odd):
+    winnings = 0
+    print(what_you_bet_on)
+    print(bet)
+    print(even_odd)
+    print(random_number)
+    for element in what_you_bet_on:
+        if element == random_number:
+            winnings = bet * 18
+            total_funds += winnings
+        elif element == (even_odd or color):
+            winnings = bet * 2
+            total_funds += winnings
+            print(total_funds)
+    # print(winnings)        
+

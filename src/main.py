@@ -1,5 +1,5 @@
 from data import data_set
-import random
+# import random
 from functions import add_history, view_history, funds, play, display_result
 
 
@@ -22,7 +22,7 @@ except FileNotFoundError as e:
 # Global variables
 bet = 0
 what_you_bet_on = []
-total_funds = 0
+# total_funds = 0
 finished_betting = ""
 random_number = 0
 game = 0
@@ -41,7 +41,7 @@ def nav_menu():
     print("1. Enter 1 to play Roulette")
     print("2. Enter 2 to view history of results")
     print("3. Enter 3 to exit the App")
-    user_choice = input("Enter you selection: ")
+    user_choice = input("Enter your selection: ")
     return user_choice
 
 user_selection = ""
@@ -50,9 +50,12 @@ while user_selection != "3":
     user_selection = nav_menu()
 
     if user_selection == "1":
+        # Had to reset the total funds to 0
+        total_funds = 0
         total_funds = funds(total_funds)
         # print(total_funds)
         play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random_number, total_funds)
+        # print(color, even_odd, random_number)
         
     elif user_selection == "2":
         view_history(file_name)
