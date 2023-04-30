@@ -47,7 +47,7 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
             what_you_bet_on.append(input("Enter what you would like to bet on (Must be either 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive): "))
             next_bet = betting(bet, what_you_bet_on, total_funds)
             total_funds -= next_bet
-            print(f"funds {total_funds}")
+            print(f"remaining funds ${total_funds}")
             bet += next_bet
             finished_betting = input("Enter 'yes' to start game or 'no' to continue placing bets: ")
             # Need to make a function for the below (repeated code)
@@ -57,8 +57,8 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
                 even_odd = ""
                 # display_result(data_set, random_number, color, even_odd, file_name)
                 random_number, color, even_odd = display_result(data_set, random_number, color, even_odd, file_name)
-                print(random_number, color, even_odd)
-                win_lose(what_you_bet_on, random_number, bet, total_funds, color, even_odd)
+                # print(random_number, color, even_odd)
+                win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd, bet)
                 # print(total_funds)
                 
                 play_roulette = input("Do you wish to exit game? (yes/no): ")
@@ -99,19 +99,21 @@ def betting(bet, what_you_bet_on, total_funds):
             print("Please type in numbers only")
 
 
-def win_lose(what_you_bet_on, random_number, bet, total_funds, color, even_odd):
+def win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd, bet):
     winnings = 0
-    print(what_you_bet_on)
-    print(bet)
-    print(even_odd)
-    print(random_number)
+    # print(what_you_bet_on)
+    # print(bet)
+    # print(even_odd)
+    # print(random_number)
+    # print(next_bet)
     for element in what_you_bet_on:
         if element == random_number:
-            winnings = bet * 18
+            winnings = (next_bet * 18) + next_bet
+            print(f"You won ${winnings} as the number was {element}")
             total_funds += winnings
-        elif element == (even_odd or color):
-            winnings = bet * 2
+        elif element == even_odd or element == color:
+            winnings = (next_bet * 2)
             total_funds += winnings
-            print(total_funds)
-    # print(winnings)        
+            print(f"You won ${winnings} as the number was {element}")
+    print(f"Your remaining funds are ${total_funds}")        
 
