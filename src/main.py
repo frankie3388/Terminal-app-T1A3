@@ -52,11 +52,9 @@ while user_selection != "3":
     if user_selection == "1":
         # Had to reset the total funds to 0
         total_funds = 0
+        what_you_bet_on = []
         total_funds = funds(total_funds)
-        # print(total_funds)
         play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random_number, total_funds)
-        # print(color, even_odd, random_number)
-        
     elif user_selection == "2":
         view_history(file_name)
     elif user_selection == "3":
