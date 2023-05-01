@@ -51,7 +51,7 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
             print(total_funds)
             total_funds -= next_bet
             print(f"remaining funds ${total_funds}")
-            bet += next_bet
+            # bet += next_bet
             finished_betting = input("Enter 'yes' to start game or 'no' to continue placing bets: ")
             # Need to make a function for the below (repeated code)
             if finished_betting == "yes":
@@ -61,13 +61,14 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
                 # display_result(data_set, random_number, color, even_odd, file_name)
                 random_number, color, even_odd = display_result(data_set, random_number, color, even_odd, file_name)
                 # print(random_number, color, even_odd)
-                win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd)
-                # print(total_funds)
+                total_funds = win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd)
+                print(total_funds)
                 
                 play_roulette = input("Do you wish to exit game? (yes/no): ")
                 if play_roulette == "no":
                     what_you_bet_on = []
-                    # bet = 0
+                    bet = 0
+                    print(next_bet)
         else:
             finished_betting = input("You can't place anymore bets as you have less than $5 in funds. Enter \"yes\" to start game: ")
             if finished_betting == "yes":
@@ -123,6 +124,7 @@ def bet_selection(what_you_bet_on):
     
 # Need to reset the total funds remaining after a game
 def win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd):
+    
     winnings = 0
     for element in what_you_bet_on:
         if element == random_number:
@@ -135,5 +137,7 @@ def win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_
             total_funds += winnings
             amount_won = winnings - next_bet
             print(f"You won ${amount_won} as the number was {element}")
+        # else:
+        #     total_funds -= next_bet
     print(f"Your remaining funds are ${total_funds}")        
-
+    return total_funds

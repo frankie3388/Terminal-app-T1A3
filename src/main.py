@@ -22,7 +22,7 @@ except FileNotFoundError as e:
 # Global variables
 bet = 0
 what_you_bet_on = []
-# total_funds = 0
+total_funds = 0
 finished_betting = ""
 random_number = 0
 game = 0
