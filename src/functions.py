@@ -2,15 +2,6 @@ import csv
 import random
 from data import data_set
 
-# bet = 0
-# what_you_bet_on = []
-# total_funds = 0
-# finished_betting = ""
-# random_number = 0
-# game = 0
-# color = ""
-# even_odd = ""
-# play_roulette = ""
 
 def add_history(file_name, color, even_odd, random_number):
     with open(file_name, "a") as history_file:
@@ -24,8 +15,6 @@ def view_history(file_name):
             print(row)
 
 def funds(total_funds):
-    # total_funds = int(input("Enter funds to start off with - a maximum of $500 can be entered: "))
-    # total_funds
     while total_funds == 0:
         try:
             total_funds = int(input("Enter funds to start off with - a minimum of $5 can be entered: "))
@@ -39,6 +28,8 @@ def funds(total_funds):
                 return total_funds
         except ValueError:
             print("Please type in numbers only")
+        except Exception as e:
+            print(e)
 
 
 def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random_number, total_funds):
@@ -55,9 +46,9 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
             finished_betting = input("Enter 'yes' to start game or 'no' to continue placing bets: ")
             # Need to make a function for the below (repeated code)
             if finished_betting == "yes":
-                random_number = 0
-                color = ""
-                even_odd = ""
+                # random_number = 0
+                # color = ""
+                # even_odd = ""
                 # display_result(data_set, random_number, color, even_odd, file_name)
                 random_number, color, even_odd = display_result(data_set, random_number, color, even_odd, file_name)
                 # print(random_number, color, even_odd)
@@ -67,12 +58,17 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
                 play_roulette = input("Do you wish to exit game? (yes/no): ")
                 if play_roulette == "no":
                     what_you_bet_on = []
-                    bet = 0
-                    print(next_bet)
+                    # bet = 0
+                    print(bet)
         else:
+            # print("You can't place anymore bets as you have less than $5 in funds.")
+            # play_roulette = input("Enter 'yes' to exit game: ")
+            # if play_roulette == "no":
+            #     what_you_bet_on = []
             finished_betting = input("You can't place anymore bets as you have less than $5 in funds. Enter \"yes\" to start game: ")
             if finished_betting == "yes":
-                display_result(data_set, random_number, color, even_odd, file_name)
+                random_number, color, even_odd = display_result(data_set, random_number, color, even_odd, file_name)
+                total_funds = win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd)
                 play_roulette = input("Do you wish to exit game? (yes/no): ")
                 if play_roulette == "no":
                     what_you_bet_on = []
@@ -101,25 +97,32 @@ def betting(bet, what_you_bet_on, total_funds):
             else:
                 return bet
         except ValueError:
-            print("Please type in numbers only")
+            print("Invalid bet. Please type in numbers only")
+        except Exception as e:
+            print(e)
 
 
 def bet_selection(what_you_bet_on):
     while True:
-        choose_bet = input("Enter what you would like to bet on (Must be either 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive): ")
-        if choose_bet == 'even':
-            return what_you_bet_on.append(choose_bet)
-        elif choose_bet == 'odd':
-            return what_you_bet_on.append(choose_bet)
-        elif choose_bet == 'black':
-            return what_you_bet_on.append(choose_bet)
-        elif choose_bet == 'red':
-            return what_you_bet_on.append(choose_bet)
-        for i in range(0, 37):
-            if int(choose_bet) == i:
-                return what_you_bet_on.append(int(choose_bet))
-        else:
-            print("Invalid choice. You can only bet on 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive")
+        try:
+            choose_bet = input("Enter what you would like to bet on (Must be either 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive): ")
+            if choose_bet == 'even':
+                return what_you_bet_on.append(choose_bet)
+            elif choose_bet == 'odd':
+                return what_you_bet_on.append(choose_bet)
+            elif choose_bet == 'black':
+                return what_you_bet_on.append(choose_bet)
+            elif choose_bet == 'red':
+                return what_you_bet_on.append(choose_bet)
+            for i in range(0, 37):
+                if int(choose_bet) == i:
+                    return what_you_bet_on.append(int(choose_bet))
+            else:
+                print("Invalid choice. You can only bet on 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive")
+        except ValueError:
+            print("Invalid bet. Please type in 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive")
+        except Exception as e:
+            print(e)
 
     
 # Need to reset the total funds remaining after a game
