@@ -1,5 +1,5 @@
 from data import data_set
-# import random
+from colored import fg, bg, attr
 from functions import add_history, view_history, funds, play, display_result
 
 
@@ -11,13 +11,13 @@ file_name = "history.csv"
 try:
     history_file = open(file_name, "r")
     history_file.close()
-    print("In try block")
+    # print("In try block")
 
 except FileNotFoundError as e:
     history_file = open(file_name, "w")
     history_file.write("Number, Colour, Even/Odd\n")
     history_file.close()
-    print("In except block")
+    # print("In except block")
 
 # Global variables
 bet = 0
@@ -35,13 +35,14 @@ play_roulette = ""
 # print(total_funds)
 
 print(f"This is a game of Roulette where you can bet on even number, odd number, black, red, and/or individual numbers from 0 to 36 inclusive")
-print(f"")
+print("")
 
 def nav_menu():
+    print(f"{fg('blue')}Menu")
     print("1. Enter 1 to play Roulette")
     print("2. Enter 2 to view history of results")
     print("3. Enter 3 to exit the App")
-    user_choice = input("Enter your selection: ")
+    user_choice = input(f"Enter your selection: {attr('reset')}")
     return user_choice
 
 user_selection = ""

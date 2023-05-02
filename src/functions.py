@@ -1,6 +1,7 @@
 import csv
 import random
 from data import data_set
+from colored import fg, bg, attr
 
 
 def add_history(file_name, color, even_odd, random_number):
@@ -38,8 +39,8 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
             # what_you_bet_on.append(input("Enter what you would like to bet on (Must be either 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive): "))
             bet_selection(what_you_bet_on)
             next_bet = betting(bet, what_you_bet_on, total_funds)
-            print(next_bet)
-            print(total_funds)
+            # print(next_bet)
+            # print(total_funds)
             total_funds -= next_bet
             print(f"remaining funds ${total_funds}")
             # bet += next_bet
@@ -53,13 +54,13 @@ def play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random
                 random_number, color, even_odd = display_result(data_set, random_number, color, even_odd, file_name)
                 # print(random_number, color, even_odd)
                 total_funds = win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd)
-                print(total_funds)
+                # print(total_funds)
                 
                 play_roulette = input("Do you wish to exit game? (yes/no): ")
                 if play_roulette == "no":
                     what_you_bet_on = []
                     # bet = 0
-                    print(bet)
+                    # print(bet)
         else:
             # print("You can't place anymore bets as you have less than $5 in funds.")
             # play_roulette = input("Enter 'yes' to exit game: ")
@@ -80,7 +81,10 @@ def display_result(data_set, random_number, color, even_odd, file_name):
         if data["number"] == random_number:
             color = data["color"]
             even_odd = data["even_odd"]
-            print(f"The number landed on is {random_number} {color} {even_odd}")
+            if color == "red":
+                print(f"The number landed on is {random_number} {fg('red')}{color}{attr('reset')} {even_odd}")
+            else:
+                print(f"The number landed on is {random_number} {bg('white')}{fg('black')}{color}{attr('reset')} {even_odd}")
             add_history(file_name, color, even_odd, random_number)
             return random_number, color, even_odd
 
