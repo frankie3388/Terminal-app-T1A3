@@ -20,9 +20,9 @@ except FileNotFoundError as e:
     # print("In except block")
 
 # Global variables
-bet = 0
+# bet = 0
 what_you_bet_on = []
-total_funds = 0
+# total_funds = 0
 finished_betting = ""
 random_number = 0
 game = 0
@@ -54,8 +54,8 @@ while user_selection != "3":
         # Had to reset the total funds to 0
         total_funds = 0
         what_you_bet_on = []
-        total_funds = funds(total_funds)
-        play(what_you_bet_on, bet, file_name, color, even_odd, play_roulette, random_number, total_funds)
+        total_funds = funds()
+        play(what_you_bet_on, file_name, color, even_odd, play_roulette, random_number, total_funds)
     elif user_selection == "2":
         view_history(file_name)
     elif user_selection == "3":
