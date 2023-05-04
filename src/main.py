@@ -1,6 +1,6 @@
 from data import data_set
 from colored import fg, bg, attr
-from functions import add_history, view_history, funds, play, display_result
+from functions import view_history, funds, play
 
 # Create the file that holds the history of results from each game
 file_name = "history.csv"
@@ -28,7 +28,8 @@ total_funds = 0
 play_roulette = ""
 
 
-print(f"This is a game of Roulette where you can bet on even number, odd number, black, red, and/or individual numbers from 0 to 36 inclusive")
+print(f"This is a game of Roulette where you can bet on even number, "
+      "odd number, black, red, and/or individual numbers from 0 to 36 inclusive")
 print("")
 
 def nav_menu():
@@ -50,7 +51,7 @@ while user_selection != "3":
         what_you_bet_on = []
         total_funds = funds()
         total_funds = play(what_you_bet_on, file_name, play_roulette, total_funds)
-        print(f"{fg('green')}You exited the game with ${total_funds}{attr('reset')}")
+        print(f"{fg('yellow')}You exited the game with ${total_funds}{attr('reset')}")
     elif user_selection == "2":
         view_history(file_name)
     elif user_selection == "3":
