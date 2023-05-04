@@ -1,6 +1,6 @@
 import pytest
 import csv
-from functions import add_history, view_history, funds, play, display_result, betting, bet_selection, win_lose
+from functions import view_history, funds, betting, win_lose
 
 
 def test_funds():

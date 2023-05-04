@@ -2,9 +2,6 @@ from data import data_set
 from colored import fg, bg, attr
 from functions import add_history, view_history, funds, play, display_result
 
-
-# print(data_set[1]["color"])
-
 # Create the file that holds the history of results from each game
 file_name = "history.csv"
 
@@ -21,18 +18,15 @@ except FileNotFoundError as e:
 
 # Global variables
 # bet = 0
-what_you_bet_on = []
-# total_funds = 0
-finished_betting = ""
-random_number = 0
-game = 0
-color = ""
-even_odd = ""
+# what_you_bet_on = []
+total_funds = 0
+# finished_betting = ""
+# random_number = 0
+# game = 0
+# color = ""
+# even_odd = ""
 play_roulette = ""
 
-
-# print(funds())
-# print(total_funds)
 
 print(f"This is a game of Roulette where you can bet on even number, odd number, black, red, and/or individual numbers from 0 to 36 inclusive")
 print("")
@@ -55,7 +49,8 @@ while user_selection != "3":
         total_funds = 0
         what_you_bet_on = []
         total_funds = funds()
-        play(what_you_bet_on, file_name, color, even_odd, play_roulette, random_number, total_funds)
+        total_funds = play(what_you_bet_on, file_name, play_roulette, total_funds)
+        print(f"{fg('green')}You exited the game with ${total_funds}{attr('reset')}")
     elif user_selection == "2":
         view_history(file_name)
     elif user_selection == "3":
