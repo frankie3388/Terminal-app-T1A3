@@ -4,6 +4,7 @@ from data import data_set
 from colored import fg, bg, attr
 
 
+
 def add_history(file_name, color, even_odd, random_number):
     with open(file_name, "a") as history_file:
         record = csv.writer(history_file)
@@ -54,7 +55,6 @@ def play(what_you_bet_on, file_name, color, even_odd, play_roulette, random_numb
                 # even_odd = ""
                 # display_result(data_set, random_number, color, even_odd, file_name)
                 random_number, color, even_odd = display_result(data_set, file_name)
-                # print(random_number, color, even_odd)
                 total_funds = win_lose(what_you_bet_on, random_number, next_bet, total_funds, color, even_odd)
                 # print(total_funds)
                 
@@ -89,6 +89,7 @@ def display_result(data_set, file_name):
                 print(f"The number landed on is {random_number} {bg('white')}{fg('black')}{color}{attr('reset')} {even_odd}")
             add_history(file_name, color, even_odd, random_number)
             return random_number, color, even_odd
+
 
 def betting(what_you_bet_on, total_funds):
     while True:
