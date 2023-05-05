@@ -1,38 +1,33 @@
 from data import data_set
-from colored import fg, bg, attr
+from colored import fg, attr
 from functions import view_history, funds, play
 
-# Create the file that holds the history of results from each game
+# Create the file variable that holds the history of results from each game
 file_name = "history.csv"
 
 try:
     history_file = open(file_name, "r")
     history_file.close()
-    # print("In try block")
 
 except FileNotFoundError as e:
+    # If file has not been created, create it and apply the headings
     history_file = open(file_name, "w")
     history_file.write("Number, Colour, Even/Odd\n")
     history_file.close()
-    # print("In except block")
 
 # Global variables
-# bet = 0
-# what_you_bet_on = []
 total_funds = 0
-# finished_betting = ""
-# random_number = 0
-# game = 0
-# color = ""
-# even_odd = ""
 play_roulette = ""
+user_selection = ""
 
-
+# Statement of What type of game this is
 print(f"This is a game of Roulette where you can bet on even number, "
       "odd number, black, red, and/or individual numbers from 0 to 36 inclusive")
 print("")
 
+
 def nav_menu():
+    # Navigation menu function
     print(f"{fg('blue')}Menu")
     print("1. Enter 1 to play Roulette")
     print("2. Enter 2 to view history of results")
@@ -40,13 +35,13 @@ def nav_menu():
     user_choice = input(f"Enter your selection: {attr('reset')}")
     return user_choice
 
-user_selection = ""
-
 while user_selection != "3":
     user_selection = nav_menu()
 
     if user_selection == "1":
-        # Had to reset the total funds to 0
+        # This condition allows you to play roulette, the total_funds variable
+        # is reset to 0 everytime the user starts the game.
+        # total_funds variable is overridden as the user plays the game.
         total_funds = 0
         what_you_bet_on = []
         total_funds = funds()
