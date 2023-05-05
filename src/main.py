@@ -10,20 +10,21 @@ try:
     history_file.close()
 
 except FileNotFoundError as e:
-    # If file has not been created, create it and apply the headings
+    # If file has been created, open in write mode and apply the headings
     history_file = open(file_name, "w")
     history_file.write("Number, Colour, Even/Odd\n")
     history_file.close()
 
 # Global variables
-total_funds = 0
+# total_funds = 0
 play_roulette = ""
 user_selection = ""
 
 # Statement of What type of game this is
 print(f"This is a game of Roulette where you can bet on even number, "
-      "odd number, black, red, and/or individual numbers from 0 to 36 inclusive")
-print("")
+      "odd number, black, red, and/or individual numbers from 0 to 36 inclusive.")
+print(f"Betting on numbers payout 18 to 1, "
+      "all other bets payout 1 to 1 if you win.")
 
 
 def nav_menu():
