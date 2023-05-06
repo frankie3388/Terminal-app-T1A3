@@ -50,7 +50,7 @@ The 'bet_selection()' function has a parameter of 'what_you_bet_on' which is an 
 ## R7 - Develop an implementation plan
 I used Trello and the Kanban board method to plan and track the progress of the Terminal application as can be seen in the screenshot below.
 ![screenshot of Kanban board from Trello](./docs/kanban-board.png)
-- [This is a link to the kanban board on Trello](https://trello.com/b/jysgGcfC/roulette-terminal-app)
+- [This is a link to the kanban board on Trello.](https://trello.com/b/jysgGcfC/roulette-terminal-app)
 
 - **Terminal Menu (Navigation menu)** - Below is a screenshot of the terminal menu implementation plan and checklist items. This was 'priority 1' as it was the starting point of the app. The due date for this feature card was 29th April 2023.
 ![screenshot of Terminal menu feature card from Trello](./docs/terminal-menu.png)
