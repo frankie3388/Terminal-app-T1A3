@@ -50,6 +50,7 @@ The 'bet_selection()' function has a parameter of 'what_you_bet_on' which is an 
 ## R7 - Develop an implementation plan
 I used Trello and the Kanban board method to plan and track the progress of the Terminal application as can be seen in the screenshot below.
 ![screenshot of Kanban board from Trello](./docs/kanban-board.png)
+- [This is a link to the kanban board on Trello](https://trello.com/b/jysgGcfC/roulette-terminal-app)
 
 - **Terminal Menu (Navigation menu)** - Below is a screenshot of the terminal menu implementation plan and checklist items. This was 'priority 1' as it was the starting point of the app. The due date for this feature card was 29th April 2023.
 ![screenshot of Terminal menu feature card from Trello](./docs/terminal-menu.png)
@@ -71,7 +72,39 @@ I used Trello and the Kanban board method to plan and track the progress of the 
 
 
 ## R8 - Design help documentation which includes a set of instructions which accurately describe how to use and install the application.
-To run the application, you have to use the wsl terminal. In the wsl terminal, type in './run.sh', this will run the application. The application will install any dependencies required like python, colored and pytest.
+To install the application go to [this link](https://github.com/frankie3388/Terminal-app-T1A3.git). The github repo will have to be cloned by clicking on the green button that says '<> code' as shown in the screenshot below.  
+![Screenshot of github repo](./docs/clone.png)  
+
+Copy the HTTPS link, and open Git Bash. Choose which directory you want to install the cloned repository. Type 'git clone', then paste in the HTTPS link that was copied from github and press enter. It should look like the screenshot below.
+![Screenshot of git command to clone](./docs/git-clone.png)  
+
+Once you have cloned the repository, open the cloned repository in VScode.
+To run the application, you have to use the wsl terminal. In the wsl terminal, type in './run.sh', this will run the application. The application will install any dependencies required like python, colored and pytest.  
+Once you have run the application, you should see that the application has started as seen in the screenshot below.
+![Screenshot of app menu](./docs/screenshot-menu.png)  
+
+You are given three options to start with, type '1' to play roulette, '2' to view the history of results, and '3' to exit the application. If you type in '1' you enter the game of roulette and a prompt will come up asking to enter funds as seen in the screenshot below.  
+![Screenshot of funds prompt in terminal](./docs/prompt-funds.png)  
+
+After entering in the funds (must be whole numbers only and greater than 5) press enter and another prompt will come up asking what you would like to bet on. You can choose to bet on 'even', 'odd', 'black', 'red', or any number between 0 and 36 inclusive. Only enter one bet at a time. The bet you entered will then show up in another prompt asking how much you want to bet for what you have chosen. This can be seen in the screenshot below.  
+![Screenshot of betting prompt in terminal](./docs/prompt-bets.png) 
+
+After entering the bet amount, it will display your remaining funds and a prompt of whether you want to start the game or continue betting will be asked. If you choose 'yes' the game will start, but if you choose 'no', you will continue to place bets. The below screenshot shows 'no', thus you can choose to make more bets. The next bet that you make appends the bet to a list data structure. As you can see in the screenshot below that the first bet was 'red' and the next bet is 'even'.
+![Screenshot of continue bets in terminal](./docs/continue-bets.png)  
+
+If you type in 'yes' to start the game, a random number will be generated. The terminal will display the number landed on and if it is red or black and even or odd. It will also display the amount won if you won in the game, and the remaining funds. Also, a prompt of 'do you wish to exit the game?' will be asked. This is shown in the screenshot below.  
+![Screenshot of start game in terminal](./docs/start-game.png)  
+
+If you choose 'no', you will be able to bet on a new game and the process repeats. If you run out of funds, or try to make a bet that exceeds your total funds, you won't be able to make anymore bets and will be asked to start the game as shown in the screenshot below.  
+![Screenshot of continue playing after a game in terminal](./docs/continue-playing.png)  
+
+Once you choose to exit the game, a statement in yellow will be displayed showing the amount of money you left the game with, and will take you back to the navigation menu, as shown below.  
+![Screenshot of exiting game in terminal](./docs/exit-game.png)  
+
+If you enter '2' in the terminal navigation menu, all the prior results of roulette will be displayed in a list structure. This data is stored in a csv file called ' history.csv'. This can be seen below.  
+![Screenshot of result history in terminal](./docs/results.png)  
+
+If you enter '3', it exits the application. A statement of 'Thanks for playing Roulette' will be displayed.
 
 # Reference List
 - Rossum, G, Warsaw, B, Coghlan, N 2001, *PEP 8 – Style Guide for Python Code*, viewed 5 May 2023, https://peps.python.org/pep-0008/

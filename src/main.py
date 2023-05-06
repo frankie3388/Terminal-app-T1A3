@@ -21,10 +21,10 @@ play_roulette = ""
 user_selection = ""
 
 # Statement of What type of game this is
-print(f"This is a game of Roulette where you can bet on even number, "
+print(f"{fg('green')}This is a game of Roulette where you can bet on even number, "
       "odd number, black, red, and/or individual numbers from 0 to 36 inclusive.")
 print(f"Betting on numbers payout 18 to 1, "
-      "all other bets payout 1 to 1 if you win.")
+      f"all other bets payout 1 to 1 if you win.{attr('reset')}")
 
 
 def nav_menu():
