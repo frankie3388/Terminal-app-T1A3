@@ -80,7 +80,7 @@ Copy the HTTPS link, and open Git Bash. Choose which directory you want to insta
 ![Screenshot of git command to clone](./docs/git-clone.png)  
 
 Once you have cloned the repository, open the cloned repository in VScode.
-To run the application, you have to use the wsl terminal. In the wsl terminal, type in './run.sh', this will run the application. The application will install any dependencies required like python, colored and pytest. This application is compatible with MacOS, Windows and Linux operating systems.  
+To run the application, you have to use the wsl terminal. In the wsl terminal, type in './run.sh', this will run the application. The application will install any dependencies required like python, colored and pytest. If the application does not run and comes up with an error like "pip3 command cannot be found", you will have to install pip3. Type in the command "sudo apt-get install python3-pip" in the terminal to install pip3. Then you can type in the './run.sh' command in the wsl terminal. This application is compatible with MacOS, Windows and Linux operating systems.  
 Once you have run the application, you should see that the application has started as seen in the screenshot below.
 ![Screenshot of app menu](./docs/screenshot-menu.png)  
 
