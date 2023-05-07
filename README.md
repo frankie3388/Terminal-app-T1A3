@@ -1,7 +1,8 @@
 # Francis Lam's Terminal Application - Roulette (T1A3)
 
-## R4 - Link to GitHub Repository
+## R4 - Link to GitHub Repository and Presentation video
 - [GitHub repo](https://github.com/frankie3388/Terminal-app-T1A3.git)
+- [Youtube Presentation video](https://youtu.be/w-jUOPpt6OQ)
 
 ## R5 - Style Guide
 I used the PEP8 style guide to structure or style my code. It can be seen in the code that each line does not exceed 79 characters, which is the standard for PEP8 (Rossum, Warsaw & Coghlan 2001). Indentation has been implemented on the the function below, the parameters were indented by 4 spaces to distinguish it from the rest of the function, which is the standard for PEP8:-

@@ -16,7 +16,6 @@ except FileNotFoundError as e:
     history_file.close()
 
 # Global variables
-# total_funds = 0
 play_roulette = ""
 user_selection = ""
 
